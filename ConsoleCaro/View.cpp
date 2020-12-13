@@ -90,21 +90,21 @@ _MENU MainMenu()
 
 	menu.options = 5;
 	menu.x = X_CENTER - 13;
-	menu.y = Y_CENTER + 10;
+	menu.y = Y_CENTER + 8;
 	menu.cursorColor = 27;
 
 	system("cls");
 
-	DrawBigText("Logo.txt", 27, 27, 7);
-	DrawBox(27, 50, 13, X_CENTER - 25, Y_CENTER + 5);
-	PrintText("***************************", 27, menu.x, menu.y - 3);
-	PrintText("*    Welcome to Caro OX   *", 27, menu.x, menu.y - 2);
-	PrintText("***************************", 27, menu.x, menu.y - 1);
-	PrintText("         Start Game        ", 27, menu.x, menu.y);
+	DrawBigText("Logo.txt", 27, 20, 7);
+	DrawBox(27, 50, 10, X_CENTER - 25, Y_CENTER + 5);
+	//PrintText("---------------------------", 27, menu.x, menu.y - 3);
+	//PrintText("|    Welcome to Caro OX   |", 27, menu.x, menu.y - 2);
+	//PrintText("---------------------------", 27, menu.x, menu.y - 1);
+	PrintText("         Play Game         ", 27, menu.x, menu.y);
 	PrintText("         Load Game         ", 27, menu.x, menu.y + 1);
-	PrintText("          Ranking          ", 27, menu.x, menu.y + 2);
-	PrintText("           Help            ", 27, menu.x, menu.y + 3);
-	PrintText("         Exit Game         ", 27, menu.x, menu.y + 4);
+	PrintText("        Leader Board       ", 27, menu.x, menu.y + 2);
+	PrintText("            Help           ", 27, menu.x, menu.y + 3);
+	PrintText("            Quit           ", 27, menu.x, menu.y + 4);
 
 	return menu;
 }

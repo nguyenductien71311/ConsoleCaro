@@ -85,7 +85,7 @@ int SelectMenu(_MENU menu)
 	int cursor = 1;
 	char key;
 
-	PrintText("--->", menu.cursorColor, menu.x - 4, menu.y);
+	PrintText(">>>", menu.cursorColor, menu.x - 4, menu.y);
 
 	do
 	{
@@ -94,13 +94,13 @@ int SelectMenu(_MENU menu)
 		{
 			PrintText("    ", menu.cursorColor, menu.x - 4, menu.y + cursor - 1);
 			cursor--;
-			PrintText("--->", menu.cursorColor, menu.x - 4, menu.y + cursor - 1);
+			PrintText(">>>", menu.cursorColor, menu.x - 4, menu.y + cursor - 1);
 		}
 		else if (key == ARROW_DOWN && cursor < menu.options)
 		{
 			PrintText("    ", menu.cursorColor, menu.x - 4, menu.y + cursor - 1);
 			cursor++;
-			PrintText("--->", menu.cursorColor, menu.x - 4, menu.y + cursor - 1);
+			PrintText(">>>", menu.cursorColor, menu.x - 4, menu.y + cursor - 1);
 		}
 		else if (key == ESC)
 		{
@@ -244,7 +244,8 @@ void ExitGame(bool & run)
 {
 	run = false;
 	system("cls");
-	DrawBigText("End.txt", 94, 15, Y_CENTER - 7);
+	//DrawBigText("End.txt", 27, 15, Y_CENTER - 7);
+	DrawBigText("End.txt", 27, 0, Y_CENTER - 6);
 	Sleep(3000);
 }
 
