@@ -96,7 +96,7 @@ _MENU MainMenu()
 	system("cls");
 
 	DrawBigText("Logo.txt", 27, 20, 7);
-	DrawBox(27, 50, 10, X_CENTER - 25, Y_CENTER + 5);
+	DrawBox(27, 50, 11, X_CENTER - 25, Y_CENTER + 5);
 	//PrintText("---------------------------", 27, menu.x, menu.y - 3);
 	//PrintText("|    Welcome to Caro OX   |", 27, menu.x, menu.y - 2);
 	//PrintText("---------------------------", 27, menu.x, menu.y - 1);
