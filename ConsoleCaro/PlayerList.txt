@@ -20,7 +20,11 @@ Bot 6
 10
 Bot 7
 6
+rr
+1
 DUC TIEN
 0
 THANH TAN
+0
+tt
 0
