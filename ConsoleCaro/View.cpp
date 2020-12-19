@@ -235,7 +235,7 @@ void ShowRank()
 	PrintText("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", 253, x - 10, y + 4);
 	PrintText("[Grand Master] " + players.at(0).name, 252, x - 2, y + 6);
 	PrintText("[Master] " + players.at(1).name, 251, x - 2, y + 7);
-	PrintText("[Challenger] " + players.at(1).name, 251, x - 2, y + 8);
+	PrintText("[Challenger] " + players.at(2).name, 251, x - 2, y + 8);
 	for (int i = 3; i < 10; i++)
 	{
 		PrintText("[Super] " + players.at(i).name, 249, x - 2, y + 6 + i);
@@ -332,7 +332,7 @@ int ProcessFinish(_POINT _A[][BOARD_SIZE], _PLAYER& _PLAYER1, _PLAYER& _PLAYER2,
 		break;
 	case P_O:
 		_PLAYER2.wins++;
-		_PLAYER2.loses++;
+		_PLAYER1.loses++;
 		PlaySoundA("WinSounds.wav", NULL, SND_ASYNC);
 		DrawBox(111, 91, 9, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
 		DrawBigText("OWin.txt", 111, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
