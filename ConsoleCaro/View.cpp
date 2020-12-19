@@ -160,10 +160,10 @@ _MENU YesNoMenu(int x, int y)
 	menu.options = 2;
 	menu.x = x;
 	menu.y = y;
-	menu.cursorColor = 249;
+	menu.cursorColor = 241;
 
-	PrintText("Yes", 245, menu.x, menu.y);
-	PrintText("No", 245, menu.x, menu.y + 1);
+	PrintText("Yes", 241, menu.x, menu.y);
+	PrintText("No", 241, menu.x, menu.y + 1);
 
 	return menu;
 }
