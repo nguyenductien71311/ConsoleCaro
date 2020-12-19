@@ -347,7 +347,7 @@ int ProcessFinish(_POINT _A[][BOARD_SIZE], _PLAYER& _PLAYER1, _PLAYER& _PLAYER2,
 		break;
 	case 2:
 		_TURN = !_TURN;
-		_TURN ? _PLAYER1.turn++ : _PLAYER2.turn++;
+		_TURN ? _PLAYER2.turn++ : _PLAYER1.turn++;
 		ShowTurn(_A, _PLAYER1, _PLAYER2, _TURN);
 		break;
 	}
