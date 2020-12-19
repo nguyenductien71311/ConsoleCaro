@@ -171,6 +171,7 @@ void RunGame(_POINT _A[][BOARD_SIZE], _PLAYER & _PLAYER1, _PLAYER & _PLAYER2, bo
 						{
 							StartGame(_A, _PLAYER1, _PLAYER2, _TURN, _COMMAND, _X, _Y);
 							PlaySoundA("NhacGame.wav", NULL, SND_ASYNC | SND_LOOP);
+							_PLAYER1.turn = 0; _PLAYER2.turn = 0;
 						}
 						else
 						{

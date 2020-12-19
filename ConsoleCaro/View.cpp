@@ -178,22 +178,29 @@ void ShowTurn(_POINT _A[][BOARD_SIZE], _PLAYER _PLAYER1, _PLAYER _PLAYER2, bool 
 
 	DrawBox(255, 20, 1, start - 2, 14);
 	PrintText(((_TURN) ? _PLAYER1.name : _PLAYER2.name) + "'s turn!", (_TURN) ? 252 : 250, start - 2, 14);
+	
 }
 
 void ShowPlayerInfo(_POINT _A[][BOARD_SIZE], _PLAYER _PLAYER1, _PLAYER _PLAYER2)
 {
 	int start = _A[0][BOARD_SIZE - 1].x + 4;
 
-	DrawBoard(3, 3, 10, 1, start, 17);
+	DrawBoard(5, 3, 10, 1, start, 17);
 
 	PrintText(_PLAYER1.name, 253, start + 12, 18);
 	PrintText(_PLAYER2.name, 253, start + 23, 18);
 	PrintText("Win games", 253, start + 1, 20);
 	PrintText(std::to_string(_PLAYER1.wins), 253, start + 12, 20);
 	PrintText(std::to_string(_PLAYER2.wins), 253, start + 23, 20);
-	PrintText("Rank", 253, start + 1, 22);
-	PrintText(std::to_string(_PLAYER1.rank), 253, start + 12, 22);
-	PrintText(std::to_string(_PLAYER2.rank), 253, start + 23, 22);
+	PrintText("Lose games", 253, start + 1, 22);
+	PrintText(std::to_string(_PLAYER1.loses), 253, start + 12, 22);
+	PrintText(std::to_string(_PLAYER2.loses), 253, start + 23, 22);
+	PrintText("Rank", 253, start + 1, 24);
+	PrintText(std::to_string(_PLAYER1.rank), 253, start + 12, 24);
+	PrintText(std::to_string(_PLAYER2.rank), 253, start + 23, 24);
+	PrintText("Turns", 253, start + 1, 26);
+	PrintText(std::to_string(_PLAYER1.turn), 253, start + 12, 26);
+	PrintText(std::to_string(_PLAYER2.turn), 253, start + 23, 26);
 }
 
 void ShowHelp()
@@ -223,14 +230,15 @@ void ShowRank()
 	system("cls");
 
 	PrintText("********************", 253, x, y);
-	PrintText("* ~TOP 10 PLAYERS~ *", 253, x, y + 1);
+	PrintText("* TOP 10 PLAYERS *", 253, x, y + 1);
 	PrintText("********************", 253, x, y + 2);
 	PrintText("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", 253, x - 10, y + 4);
-	PrintText("[Master King] " + players.at(0).name, 252, x - 2, y + 6);
-	PrintText("[King] " + players.at(1).name, 251, x - 2, y + 7);
-	for (int i = 2; i < 10; i++)
+	PrintText("[Grand Master] " + players.at(0).name, 252, x - 2, y + 6);
+	PrintText("[Master] " + players.at(1).name, 251, x - 2, y + 7);
+	PrintText("[Challenger] " + players.at(2).name, 251, x - 2, y + 8);
+	for (int i = 3; i < 10; i++)
 	{
-		PrintText("[Master] " + players.at(i).name, 249, x - 2, y + 6 + i);
+		PrintText("[Super] " + players.at(i).name, 249, x - 2, y + 6 + i);
 	}
 
 	PrintText("-Press Esc to turn back-", 253, x - 2, y + 16);
@@ -286,23 +294,25 @@ void DrawBigText(string filename, int color, int x, int y)
 	if (filename == "XWin.txt" || filename == "OWin.txt" || filename == "Draw.txt")
 	{
 		int count = 0;
-		while (count <= 48)
+		while (count <= 12)
 		{
 			for (int i = 0; i < line1.size(); i++)
 				PrintText(line1[i], color + count % 10, x, y++);
 			y = tempY;
-			Sleep(100);
+			Sleep(250);
 			for (int i = 0; i < line1.size(); i++)
 			{
 				string templine = "";
 				for (int j = 0; j < line1[i].length(); j++) templine += ' ';
 				PrintText(templine, 240, x, y++);
 			}
-			Sleep(100);
+			Sleep(250);
 			y = tempY;
 			count++;
 		}
 	}
+
+	
 	for (int i = 0; i < line1.size(); i++)
 		PrintText(line1[i], color, x, y++);
 	textFile.close();
@@ -314,25 +324,30 @@ int ProcessFinish(_POINT _A[][BOARD_SIZE], _PLAYER& _PLAYER1, _PLAYER& _PLAYER2,
 	{
 	case P_X:
 		_PLAYER1.wins++;
+		_PLAYER2.loses++;
 		PlaySoundA("WinSounds.wav", NULL, SND_ASYNC);
-		DrawBox(111, 100, 12, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
-		DrawBigText("XWin.txt", 111, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
+		DrawBox(111, 91, 9, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
+		DrawBigText("XWin.txt",111, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
 		SavePlayer(_PLAYER1);
 		break;
 	case P_O:
 		_PLAYER2.wins++;
+		_PLAYER1.loses++;
 		PlaySoundA("WinSounds.wav", NULL, SND_ASYNC);
-		DrawBox(111, 100, 12, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
+		DrawBox(111, 91, 9, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
 		DrawBigText("OWin.txt", 111, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
 		SavePlayer(_PLAYER2);
 		break;
 	case 0:
+		_PLAYER1.wins++;
+		_PLAYER2.wins++;
 		PlaySoundA("WinSounds.wav", NULL, SND_ASYNC);
-		DrawBox(111, 100, 12, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
+		DrawBox(111, 91, 9, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
 		DrawBigText("Draw.txt", 111, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
 		break;
 	case 2:
 		_TURN = !_TURN;
+		_TURN ? _PLAYER1.turn++ : _PLAYER2.turn++;
 		ShowTurn(_A, _PLAYER1, _PLAYER2, _TURN);
 		break;
 	}

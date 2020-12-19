@@ -69,7 +69,9 @@ struct _PLAYER
 {
 	string name; //Ten nguoi choi
 	int wins = 0;	 //Dem so tran thang
+	int loses = 0; //Dem so tran thua
 	int rank; //Xep hang cua nguoi choi
+	int turn = 0 ; //Dem turn
 
 	bool operator>(_PLAYER other);
 	bool operator<(_PLAYER other);
