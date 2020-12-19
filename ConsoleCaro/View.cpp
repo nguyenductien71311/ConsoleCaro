@@ -121,14 +121,14 @@ _MENU LoadingMenu()
 	menu.options = files.size();
 	menu.x = X_CENTER - 15;
 	menu.y = Y_CENTER - files.size() / 2;
-	menu.cursorColor = 219;
+	menu.cursorColor = 27;
 
-	DrawBox(221, 100, menu.options + 10, X_CENTER - 50, Y_CENTER - 5);
-	PrintText("[==========Saved Games===========]", 219, menu.x, menu.y - 2);
+	DrawBox(27, 100, menu.options + 10, X_CENTER - 50, Y_CENTER - 5);
+	PrintText("[=========Saved Games=========]", 27, menu.x - 1, menu.y - 2);
 	for (int i = 0; i < files.size(); i++)
 	{
 		name = "         " + files.at(i);
-		PrintText(name, 223, menu.x, menu.y + i);
+		PrintText(name, 27, menu.x, menu.y + i);
 	}
 
 	return menu;
