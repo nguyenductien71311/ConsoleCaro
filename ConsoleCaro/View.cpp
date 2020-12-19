@@ -91,20 +91,20 @@ _MENU MainMenu()
 	menu.options = 5;
 	menu.x = X_CENTER - 13;
 	menu.y = Y_CENTER + 8;
-	menu.cursorColor = 27;
+	menu.cursorColor = 31;
 
 	system("cls");
 
-	DrawBigText("Logo.txt", 27, 20, 7);
-	DrawBox(27, 50, 11, X_CENTER - 25, Y_CENTER + 5);
-	//PrintText("---------------------------", 27, menu.x, menu.y - 3);
-	//PrintText("|    Welcome to Caro OX   |", 27, menu.x, menu.y - 2);
-	//PrintText("---------------------------", 27, menu.x, menu.y - 1);
-	PrintText("         Play Game         ", 27, menu.x, menu.y);
-	PrintText("         Load Game         ", 27, menu.x, menu.y + 1);
-	PrintText("        Leader Board       ", 27, menu.x, menu.y + 2);
-	PrintText("            Help           ", 27, menu.x, menu.y + 3);
-	PrintText("            Quit           ", 27, menu.x, menu.y + 4);
+	DrawBigText("Logo.txt", 241, 20, 7);
+	DrawBox(31, 50, 11, X_CENTER - 25, Y_CENTER + 5);
+	/*PrintText("---------------------------", 27, menu.x, menu.y - 3);
+	PrintText("|        Welcome          |", 27, menu.x, menu.y - 2);
+	PrintText("---------------------------", 27, menu.x, menu.y - 1);*/
+	PrintText("         Play Game         ", 31, menu.x, menu.y);
+	PrintText("         Load Game         ", 31, menu.x, menu.y + 1);
+	PrintText("        Leader Board       ", 31, menu.x, menu.y + 2);
+	PrintText("            Help           ", 31, menu.x, menu.y + 3);
+	PrintText("            Quit           ", 31, menu.x, menu.y + 4);
 
 	return menu;
 }
@@ -121,14 +121,14 @@ _MENU LoadingMenu()
 	menu.options = files.size();
 	menu.x = X_CENTER - 15;
 	menu.y = Y_CENTER - files.size() / 2;
-	menu.cursorColor = 219;
+	menu.cursorColor = 31;
 
-	DrawBox(221, 100, menu.options + 10, X_CENTER - 50, Y_CENTER - 5);
-	PrintText("[==========Saved Games===========]", 219, menu.x, menu.y - 2);
+	DrawBox(31, 100, menu.options + 10, X_CENTER - 50, Y_CENTER - 5);
+	PrintText("[==========Saved Games===========]", 31, menu.x, menu.y - 2);
 	for (int i = 0; i < files.size(); i++)
 	{
 		name = "         " + files.at(i);
-		PrintText(name, 223, menu.x, menu.y + i);
+		PrintText(name, 31, menu.x, menu.y + i);
 	}
 
 	return menu;
@@ -160,10 +160,10 @@ _MENU YesNoMenu(int x, int y)
 	menu.options = 2;
 	menu.x = x;
 	menu.y = y;
-	menu.cursorColor = 249;
+	menu.cursorColor = 31;
 
-	PrintText("Yes", 245, menu.x, menu.y);
-	PrintText("No", 245, menu.x, menu.y + 1);
+	PrintText("Yes", 31, menu.x, menu.y);
+	PrintText("No", 31, menu.x, menu.y + 1);
 
 	return menu;
 }
@@ -174,10 +174,10 @@ void ShowTurn(_POINT _A[][BOARD_SIZE], _PLAYER _PLAYER1, _PLAYER _PLAYER2, bool 
 
 	DrawBox(255, 30, 10, start, 2);
 
-	DrawBigText((_TURN) ? "X.txt" : "O.txt", (_TURN) ? 252 : 250, start, 2);
+	DrawBigText((_TURN) ? "X.txt" : "O.txt", (_TURN) ? 241 : 242, start, 2);
 
 	DrawBox(255, 20, 1, start - 2, 14);
-	PrintText(((_TURN) ? _PLAYER1.name : _PLAYER2.name) + "'s turn!", (_TURN) ? 252 : 250, start - 2, 14);
+	PrintText(((_TURN) ? _PLAYER1.name : _PLAYER2.name) + "'s turn!", (_TURN) ? 241 : 242, start - 2, 14);
 }
 
 void ShowPlayerInfo(_POINT _A[][BOARD_SIZE], _PLAYER _PLAYER1, _PLAYER _PLAYER2)
@@ -296,7 +296,7 @@ void DrawBigText(string filename, int color, int x, int y)
 			{
 				string templine = "";
 				for (int j = 0; j < line1[i].length(); j++) templine += ' ';
-				PrintText(templine, 240, x, y++);
+				PrintText(templine, 241, x, y++);
 			}
 			Sleep(100);
 			y = tempY;
@@ -315,21 +315,21 @@ int ProcessFinish(_POINT _A[][BOARD_SIZE], _PLAYER& _PLAYER1, _PLAYER& _PLAYER2,
 	case P_X:
 		_PLAYER1.wins++;
 		PlaySoundA("WinSounds.wav", NULL, SND_ASYNC);
-		DrawBox(111, 100, 12, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
-		DrawBigText("XWin.txt", 111, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
+		DrawBox(31, 100, 12, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
+		DrawBigText("XWin.txt", 31, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
 		SavePlayer(_PLAYER1);
 		break;
 	case P_O:
 		_PLAYER2.wins++;
 		PlaySoundA("WinSounds.wav", NULL, SND_ASYNC);
-		DrawBox(111, 100, 12, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
-		DrawBigText("OWin.txt", 111, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
+		DrawBox(33, 100, 12, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
+		DrawBigText("OWin.txt", 33, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
 		SavePlayer(_PLAYER2);
 		break;
 	case 0:
 		PlaySoundA("WinSounds.wav", NULL, SND_ASYNC);
-		DrawBox(111, 100, 12, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
-		DrawBigText("Draw.txt", 111, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
+		DrawBox(32, 100, 12, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
+		DrawBigText("Draw.txt", 32, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
 		break;
 	case 2:
 		_TURN = !_TURN;

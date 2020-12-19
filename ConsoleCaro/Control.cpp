@@ -197,13 +197,13 @@ void SaveGame(_POINT _A[][BOARD_SIZE], _PLAYER _PLAYER1, _PLAYER _PLAYER2, bool 
 	do
 	{
 		system("cls");
-		PrintText("Nhap ten muon luu game: ", 245, X_CENTER - 30, Y_CENTER);
+		PrintText("Nhap ten muon luu game: ", 243, X_CENTER - 30, Y_CENTER);
 		std::getline(cin, filename);
 		filename += ".txt";
 		if (CheckFileExistence(filename))
 		{
-			PrintText("Ten da ton tai", 245, X_CENTER - 30, Y_CENTER + 2);
-			PrintText("Ban co muon luu de?", 245, X_CENTER - 30, Y_CENTER + 4);
+			PrintText("Ten da ton tai", 243, X_CENTER - 30, Y_CENTER + 2);
+			PrintText("Ban co muon luu de?", 243, X_CENTER - 30, Y_CENTER + 4);
 			option = SelectMenu(YesNoMenu(X_CENTER - 15, Y_CENTER + 5));
 			key = RunYesNoMenu(option);
 			if (key == 'Y')
@@ -245,7 +245,7 @@ void ExitGame(bool & run)
 	run = false;
 	system("cls");
 	//DrawBigText("End.txt", 27, 15, Y_CENTER - 7);
-	DrawBigText("End.txt", 27, 0, Y_CENTER - 6);
+	DrawBigText("End.txt", 241, 10, Y_CENTER - 6);
 	Sleep(3000);
 }
 
