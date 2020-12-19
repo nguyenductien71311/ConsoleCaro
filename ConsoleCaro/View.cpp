@@ -299,14 +299,14 @@ void DrawBigText(string filename, int color, int x, int y)
 			for (int i = 0; i < line1.size(); i++)
 				PrintText(line1[i], color + count % 10, x, y++);
 			y = tempY;
-			Sleep(250);
+			Sleep(100);
 			for (int i = 0; i < line1.size(); i++)
 			{
 				string templine = "";
 				for (int j = 0; j < line1[i].length(); j++) templine += ' ';
 				PrintText(templine, 240, x, y++);
 			}
-			Sleep(250);
+			Sleep(100);
 			y = tempY;
 			count++;
 		}
@@ -347,7 +347,7 @@ int ProcessFinish(_POINT _A[][BOARD_SIZE], _PLAYER& _PLAYER1, _PLAYER& _PLAYER2,
 		break;
 	case 2:
 		_TURN = !_TURN;
-		_TURN ? _PLAYER1.turn++ : _PLAYER2.turn++;
+		_TURN ? _PLAYER2.turn++ : _PLAYER1.turn++;
 		ShowTurn(_A, _PLAYER1, _PLAYER2, _TURN);
 		break;
 	}
