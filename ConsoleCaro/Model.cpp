@@ -5,13 +5,13 @@ void SetPlayer(_PLAYER& _PLAYER1, _PLAYER& _PLAYER2)
 	system("cls");
 	do
 	{
-		PrintText("Enter Player1's name (2-10 characters): ", 252, X_CENTER - 24, Y_CENTER);
+		PrintText("Enter Player1's name (2-10 characters): ", 243, X_CENTER - 24, Y_CENTER);
 		std::getline(cin, _PLAYER1.name);
 		DrawBox(255, 100, 1, X_CENTER, Y_CENTER);
 	} while (_PLAYER1.name.length() < 2 || _PLAYER1.name.length() > 10);
 	do
 	{
-		PrintText("Enter Player2's name (2-10 characters): ", 250, X_CENTER - 24, Y_CENTER);
+		PrintText("Enter Player2's name (2-10 characters): ", 244, X_CENTER - 24, Y_CENTER);
 		std::getline(cin, _PLAYER2.name);
 		DrawBox(255, 100, 1, X_CENTER, Y_CENTER);
 	} while (_PLAYER2.name.length() < 2 || _PLAYER2.name.length() > 10 || _PLAYER2 == _PLAYER1);

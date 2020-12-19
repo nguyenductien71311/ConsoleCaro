@@ -89,22 +89,22 @@ _MENU MainMenu()
 	_MENU menu;
 
 	menu.options = 5;
-	menu.x = X_CENTER - 13;
+	menu.x = X_CENTER - 5;
 	menu.y = Y_CENTER + 8;
-	menu.cursorColor = 27;
+	menu.cursorColor = 245;
 
 	system("cls");
 
-	DrawBigText("Logo.txt", 27, 20, 7);
-	DrawBox(27, 50, 11, X_CENTER - 25, Y_CENTER + 5);
+	DrawBigText("Logo.txt", 244, 28, 8);
+	//DrawBox(27, 50, 11, X_CENTER - 25, Y_CENTER + 5);
 	//PrintText("---------------------------", 27, menu.x, menu.y - 3);
 	//PrintText("|    Welcome to Caro OX   |", 27, menu.x, menu.y - 2);
 	//PrintText("---------------------------", 27, menu.x, menu.y - 1);
-	PrintText("         Play Game         ", 27, menu.x, menu.y);
-	PrintText("         Load Game         ", 27, menu.x, menu.y + 1);
-	PrintText("        Leader Board       ", 27, menu.x, menu.y + 2);
-	PrintText("            Help           ", 27, menu.x, menu.y + 3);
-	PrintText("            Quit           ", 27, menu.x, menu.y + 4);
+	PrintText("            Play           ", 245, menu.x, menu.y);
+	PrintText("            Load           ", 245, menu.x, menu.y + 1);
+	PrintText("         Leaderboard       ", 245, menu.x, menu.y + 2);
+	PrintText("            Help           ", 245, menu.x, menu.y + 3);
+	PrintText("            Quit           ", 245, menu.x, menu.y + 4);
 
 	return menu;
 }
@@ -144,11 +144,11 @@ _MENU EscMenu(_POINT _A[][BOARD_SIZE])
 	menu.cursorColor = 75;
 
 	//DrawBoard(1, 1, 62, 25, menu.x - 23, menu.y - 19);
-	DrawBox(75, 82, 25, menu.x - 23, menu.y - 19);
-	DrawBigText("EscLogo.txt", 75, menu.x - 22, menu.y - 17);
-	PrintText("    Continue    ", 75, menu.x + 10, menu.y);
-	PrintText("    Save game   ", 75, menu.x + 10, menu.y + 1);
-	PrintText("    Exit game   ", 75, menu.x + 10, menu.y + 2);
+	DrawBox(75, 85, 25, menu.x - 23, menu.y - 17);
+	DrawBigText("EscLogo.txt", 79, menu.x - 22, menu.y - 15);
+	PrintText("    Continue    ", 79, menu.x + 10, menu.y);
+	PrintText("    Save game   ", 79, menu.x + 10, menu.y + 1);
+	PrintText("    Exit game   ", 79, menu.x + 10, menu.y + 2);
 
 	return menu;
 }
@@ -199,7 +199,7 @@ void ShowPlayerInfo(_POINT _A[][BOARD_SIZE], _PLAYER _PLAYER1, _PLAYER _PLAYER2)
 void ShowHelp()
 {
 	int x = X_CENTER - 15;
-	int y = Y_CENTER - 10;
+	int y = Y_CENTER - 12;
 	string line;
 	int i = 0;
 
@@ -209,7 +209,7 @@ void ShowHelp()
 	system("cls");
 	while (getline(helpFile, line))
 	{
-		PrintText(line, 243, x, y + i);
+		PrintText(line, 245, x, y + i);
 		i++;
 	}
 }
@@ -313,23 +313,26 @@ int ProcessFinish(_POINT _A[][BOARD_SIZE], _PLAYER& _PLAYER1, _PLAYER& _PLAYER2,
 	switch (pWhoWin)
 	{
 	case P_X:
+		system("cls");
 		_PLAYER1.wins++;
 		PlaySoundA("WinSounds.wav", NULL, SND_ASYNC);
-		DrawBox(111, 100, 12, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
-		DrawBigText("XWin.txt", 111, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
+		//DrawBox(111, 100, 12, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
+		DrawBigText("XWin.txt", 245, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
 		SavePlayer(_PLAYER1);
 		break;
 	case P_O:
+		system("cls");
 		_PLAYER2.wins++;
 		PlaySoundA("WinSounds.wav", NULL, SND_ASYNC);
-		DrawBox(111, 100, 12, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
-		DrawBigText("OWin.txt", 111, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
+		//DrawBox(111, 100, 12, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
+		DrawBigText("OWin.txt", 245, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
 		SavePlayer(_PLAYER2);
 		break;
 	case 0:
+		system("cls");
 		PlaySoundA("WinSounds.wav", NULL, SND_ASYNC);
-		DrawBox(111, 100, 12, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
-		DrawBigText("Draw.txt", 111, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
+		//DrawBox(111, 100, 12, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
+		DrawBigText("Draw.txt", 245, _A[0][0].x + 1, _A[BOARD_SIZE - 1][0].y + 2);
 		break;
 	case 2:
 		_TURN = !_TURN;

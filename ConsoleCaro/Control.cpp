@@ -85,22 +85,22 @@ int SelectMenu(_MENU menu)
 	int cursor = 1;
 	char key;
 
-	PrintText(">>>", menu.cursorColor, menu.x - 4, menu.y);
+	PrintText("<>", menu.cursorColor, menu.x + 3, menu.y);
 
 	do
 	{
 		key = _getch();
 		if (key == ARROW_UP && cursor > 1)
 		{
-			PrintText("    ", menu.cursorColor, menu.x - 4, menu.y + cursor - 1);
+			PrintText("    ", menu.cursorColor, menu.x + 3, menu.y + cursor - 1);
 			cursor--;
-			PrintText(">>>", menu.cursorColor, menu.x - 4, menu.y + cursor - 1);
+			PrintText("<>", menu.cursorColor, menu.x + 3, menu.y + cursor - 1);
 		}
 		else if (key == ARROW_DOWN && cursor < menu.options)
 		{
-			PrintText("    ", menu.cursorColor, menu.x - 4, menu.y + cursor - 1);
+			PrintText("    ", menu.cursorColor, menu.x + 3, menu.y + cursor - 1);
 			cursor++;
-			PrintText(">>>", menu.cursorColor, menu.x - 4, menu.y + cursor - 1);
+			PrintText("<>", menu.cursorColor, menu.x + 3, menu.y + cursor - 1);
 		}
 		else if (key == ESC)
 		{
@@ -197,7 +197,7 @@ void SaveGame(_POINT _A[][BOARD_SIZE], _PLAYER _PLAYER1, _PLAYER _PLAYER2, bool 
 	do
 	{
 		system("cls");
-		PrintText("Nhap ten muon luu game: ", 245, X_CENTER - 30, Y_CENTER);
+		PrintText("Nhap ten de luu game: ", 245, X_CENTER - 10, Y_CENTER);
 		std::getline(cin, filename);
 		filename += ".txt";
 		if (CheckFileExistence(filename))
