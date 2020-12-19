@@ -141,14 +141,14 @@ _MENU EscMenu(_POINT _A[][BOARD_SIZE])
 	menu.options = 3;
 	menu.x = _A[0][BOARD_SIZE - 1].x + 65;
 	menu.y = Y_CENTER + 3;
-	menu.cursorColor = 75;
+	menu.cursorColor = 27;
 
 	//DrawBoard(1, 1, 62, 25, menu.x - 23, menu.y - 19);
-	DrawBox(75, 82, 25, menu.x - 23, menu.y - 19);
-	DrawBigText("EscLogo.txt", 75, menu.x - 22, menu.y - 17);
-	PrintText("    Continue    ", 75, menu.x + 10, menu.y);
-	PrintText("    Save game   ", 75, menu.x + 10, menu.y + 1);
-	PrintText("    Exit game   ", 75, menu.x + 10, menu.y + 2);
+	DrawBox(27, 82, 25, menu.x - 23, menu.y - 19);
+	DrawBigText("EscLogo.txt", 27, menu.x - 22, menu.y - 17);
+	PrintText("    Continue    ", 27, menu.x + 10, menu.y);
+	PrintText("    Save game   ", 27, menu.x + 10, menu.y + 1);
+	PrintText("    Exit game   ", 27, menu.x + 10, menu.y + 2);
 
 	return menu;
 }
@@ -230,7 +230,7 @@ void ShowRank()
 	system("cls");
 
 	PrintText("********************", 253, x, y);
-	PrintText("* TOP 10 PLAYERS *", 253, x, y + 1);
+	PrintText("*  TOP 10 PLAYERS  *", 253, x, y + 1);
 	PrintText("********************", 253, x, y + 2);
 	PrintText("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", 253, x - 10, y + 4);
 	PrintText("[Grand Master] " + players.at(0).name, 252, x - 2, y + 6);
